@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>Flower Grow</title>
     <style>
-        body {
-            background-color: rgb(47, 173, 47);
-        }
         .options {
             padding: 10px;
             margin: 10px;
             /*position: fixed;*/
+        }
+        #garden {
+            width: 100%;
+            height: 600px;
+            background-color: rgb(47, 173, 47);
         }
     </style>
 </head>
@@ -22,11 +24,16 @@
     </select>
     <button id="pond" class="options">Add pond</button>
     Pond size: <input type="number" min="10" max="1000" id="pond size">
+    <button id="randomizePond" class="options">Randomize Pond</button>
+    <div id="garden"></div>
     <script>
         const rabbitEl = document.createElement("img");
         rabbitEl.src = "img/rabbit.webp";
         rabbitEl.alt = "rabbit running about";
         rabbitEl.style.height = "20px";
+        rabbitEl.style.position = "absolute";
+        rabbitEl.style.top = "50%";
+        rabbitEl.style.left = "50%";
         document.body.appendChild(rabbitEl);
         const onClick = function(e) {
             const flowerSelection = document.getElementById("flower-selection");
@@ -39,7 +46,7 @@
             document.body.appendChild(flowerEl);
             console.log(flowerSelection.value)
         };
-        document.addEventListener("click", onClick);
+        document.getElementById("garden").addEventListener("click", onClick);
         const addPond = document.getElementById("pond");
         const pondEl = document.createElement("img");
         const makePond = function() {
@@ -53,6 +60,11 @@
             document.body.appendChild(pondEl);
         }
         addPond.addEventListener("click", makePond);
+        const randomizePond = document.getElementById("randomizePond");
+        randomizePond.onclick = function (e) {
+            pondEl.style.top = Math.random() * 100 + "%";
+            pondEl.style.left = Math.random() * 100 + "%";
+        }
     </script>
 </body>
 </html>
