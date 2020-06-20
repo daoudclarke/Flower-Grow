@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower Grow</title>
+    <style>
+        body {
+            background-color: rgb(47, 173, 47);
+        }
+        .options {
+            padding: 10px;
+            margin: 10px;
+            /*position: fixed;*/
+        }
+    </style>
+</head>
+<body>
+    <select id="flower-selection" class="options">
+        <option>Daisy</option>
+        <option>Rose</option>
+        <option>Lily</option>
+    </select>
+    <button id="pond" class="options">Add pond</button>
+    Pond size: <input type="number" min="10" max="1000" id="pond size">
+    <script>
+            const onClick = function(e) {
+                const flowerSelection = document.getElementById("flower-selection");
+                const flowerEl = document.createElement("img");
+                flowerEl.src = "img/" + flowerSelection.value + ".png";
+                flowerEl.alt = flowerSelection.value
+                flowerEl.style.position = 'absolute';
+                flowerEl.style.top = e.clientY + "px";
+                flowerEl.style.left = e.clientX + "px";
+                document.body.appendChild(flowerEl);
+                console.log(flowerSelection.value)
+            };
+            document.addEventListener("click", onClick);
+            const addPond = document.getElementById("pond");
+            const pondEl = document.createElement("img");
+            const makePond = function() {
+                pondEl.src = "img/Pond.png";
+                pondEl.alt = "pond";
+                pondEl.style.position = 'absolute';
+                pondEl.style.top = "50%"
+                pondEl.style.bottom = "50%"
+                const pondSize = document.getElementById("pond size")
+                pondEl.style.height = pondSize.value + "px";
+                document.body.appendChild(pondEl);
+            }
+            addPond.addEventListener("click", makePond);
+    </script>
+</body>
+</html>
