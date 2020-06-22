@@ -32,8 +32,8 @@
         rabbitEl.alt = "rabbit running about";
         rabbitEl.style.height = "20px";
         rabbitEl.style.position = "absolute";
-        rabbitEl.style.top = "50%";
-        rabbitEl.style.left = "50%";
+        rabbitEl.style.top = Math.random()*100 + "%";
+        rabbitEl.style.left = Math.random()*100 + "%";
         document.body.appendChild(rabbitEl);
         const onClick = function(e) {
             const flowerSelection = document.getElementById("flower-selection");
