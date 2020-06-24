@@ -17,6 +17,10 @@
     </style>
 </head>
 <body>
+    <select id="draw-selection" class="options">
+        <option>Flowers</option>
+        <option>Paths</option>
+    </select>
     <select id="flower-selection" class="options">
         <option>Daisy</option>
         <option>Rose</option>
@@ -36,15 +40,29 @@
         rabbitEl.style.left = Math.random()*100 + "%";
         document.body.appendChild(rabbitEl);
         const onClick = function(e) {
-            const flowerSelection = document.getElementById("flower-selection");
-            const flowerEl = document.createElement("img");
-            flowerEl.src = "img/" + flowerSelection.value + ".png";
-            flowerEl.alt = flowerSelection.value
-            flowerEl.style.position = 'absolute';
-            flowerEl.style.top = e.clientY + "px";
-            flowerEl.style.left = e.clientX + "px";
-            document.body.appendChild(flowerEl);
-            console.log(flowerSelection.value)
+            const draw = document.getElementById("draw-selection").value
+            if (draw === "Flowers") {
+                const flowerSelection = document.getElementById("flower-selection");
+                const flowerEl = document.createElement("img");
+                flowerEl.src = "img/" + flowerSelection.value + ".png";
+                flowerEl.alt = flowerSelection.value;
+                flowerEl.style.position = 'absolute';
+                flowerEl.style.top = e.clientY + "px";
+                flowerEl.style.left = e.clientX + "px";
+                document.body.appendChild(flowerEl);
+                console.log(flowerSelection.value)
+            }
+            if (draw === "Paths") {
+                const pathEl = document.createElement("div");
+                pathEl.style.top = e.clientY + "px";
+                pathEl.style.left = e.clientX + "px";
+                pathEl.style.position = 'absolute';
+                pathEl.style.paddingTop = "20px";
+                pathEl.style.paddingLeft = "30px";
+                pathEl.style.backgroundColor = "brown";
+                pathEl.style.borderRadius = "1000px";
+                document.body.appendChild(pathEl)
+            }
         };
         document.getElementById("garden").addEventListener("click", onClick);
         const addPond = document.getElementById("pond");
