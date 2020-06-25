@@ -39,6 +39,11 @@
         rabbitEl.style.top = Math.random()*100 + "%";
         rabbitEl.style.left = Math.random()*100 + "%";
         document.body.appendChild(rabbitEl);
+        const relocateRabbit = function() {
+            rabbitEl.style.top = Math.random()*100 + "%";
+            rabbitEl.style.left = Math.random()*100 + "%";
+        };
+        const activate = window.setInterval(relocateRabbit, 5000)
         const onClick = function(e) {
             const draw = document.getElementById("draw-selection").value
             if (draw === "Flowers") {
