@@ -40,6 +40,15 @@
         rabbitEl.style.left = Math.random()*100 + "%";
         document.body.appendChild(rabbitEl);
         const relocateRabbit = function() {
+            const rabbitAreaEl = document.createElement("div");
+            rabbitAreaEl.style.top = rabbitEl.style.top;
+            rabbitAreaEl.style.left = rabbitEl.style.left;
+            rabbitAreaEl.style.position = 'absolute';
+            rabbitAreaEl.style.paddingTop = "30px";
+            rabbitAreaEl.style.paddingLeft = "30px";
+            rabbitAreaEl.style.backgroundColor = "rgba(99,72,51,0.85)";
+            document.body.appendChild(rabbitAreaEl);
+
             rabbitEl.style.top = Math.random()*100 + "%";
             rabbitEl.style.left = Math.random()*100 + "%";
         };
